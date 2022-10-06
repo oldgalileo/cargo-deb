@@ -119,6 +119,14 @@ In `.cargo/config` you can add `[target.<target triple>] strip = { path = "…" 
 
 Removes debug symbols from executables and places them as separate files in `/usr/lib/debug`. Requires GNU `objcopy` tool.
 
+### Custom build subcommand
+
+To use a different cargo-build tool (i.e. [`cargo-zigbuild`](https://github.com/messense/cargo-zigbuild)), you can change the default `cargo` subcommand from `build` using the `--cargo-build` flag.
+
+```
+cargo deb --cargo-build zigbuild -- --target aarch64-unknown-linux-gnu.2.27 --target-dir target/release
+```
+
 ### Custom build flags
 
 If you would like to handle the build process yourself, you can use `cargo deb --no-build` so that the `cargo-deb` command will not attempt to rebuild your project.
